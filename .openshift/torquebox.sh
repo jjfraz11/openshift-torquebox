@@ -2,7 +2,7 @@
 
 # The version of TorqueBox to install. Should be either LATEST, an
 # official release (e.g. 2.1.3) or an incremental build number (e.g. 1594)
-VERSION=3.0.0
+VERSION=3.1.1
 
 # The application environment - usually one of development, test, or production
 export RACK_ENV=production
