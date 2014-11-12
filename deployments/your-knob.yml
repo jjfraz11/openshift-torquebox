@@ -4,3 +4,7 @@ application:
   env: <%= ENV['RACK_ENV'] %>
 ruby:
   version: 2.0
+  compile_mode: jit
+  debug: false
+  interactive: true
+  profile_api: true
