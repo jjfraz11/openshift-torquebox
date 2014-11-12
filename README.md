@@ -18,7 +18,7 @@ Ensure you have the latest version of the
 
 Create a jbossas-7 application from the code in this repository:
 
-    rhc app create yourapp jbossas-7 -s --from-code git://github.com/openshift-quickstart/torquebox-quickstart.git
+    rhc app create yourapp jbossas-7 -s --from-code git://github.com/jjfraz11/openshift-torquebox.git
 
 That's it! The first build will take a minute or two, so be patient.
 You should ssh to your app and run `tail_all` so you'll have something
