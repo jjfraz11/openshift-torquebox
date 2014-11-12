@@ -2,3 +2,5 @@
 application:
   root: <%= ENV['OPENSHIFT_REPO_DIR'] %>
   env: <%= ENV['RACK_ENV'] %>
+ruby:
+  version: 2.0
