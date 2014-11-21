@@ -27,7 +27,7 @@
     <extension module="org.projectodd.polyglot.hasingleton"/>
     <extension module="org.projectodd.polyglot.cache"/>
   </extensions>
-  
+
   <system-properties>
     <property name='org.apache.tomcat.util.http.ServerCookie.FWD_SLASH_IS_SEPARATOR' value='false'/>
     <property name='org.apache.tomcat.util.net.WAIT_FOR_THREAD' value='false'/>
@@ -145,11 +145,10 @@
       <jboss-descriptor-property-replacement>true</jboss-descriptor-property-replacement>
     </subsystem>
     <subsystem xmlns="urn:jboss:domain:infinispan:1.4">
-      <cache-container name="singleton" aliases="cluster ha-partition" default-cache="default">
-        <transport lock-timeout="60000"/>
-        <replicated-cache name="default" mode="SYNC" batching="true">
-          <locking isolation="REPEATABLE_READ"/>
-        </replicated-cache>
+      <cache-container name='web' aliases='standard-session-cache' default-cache='local-web' module='org.jboss.as.clustering.web.infinispan'>
+        <local-cache name='local-web' batching='true'>
+          <file-store passivation='false' purge='false'/>
+        </local-cache>
       </cache-container>
       <cache-container name='polyglot' default-cache='sessions' aliases='torquebox'>
         <local-cache name='sessions' start='EAGER'>
@@ -157,16 +156,6 @@
           <expiration max-idle='100000'/>
           <transaction mode='FULL_XA'/>
         </local-cache>
-      </cache-container>
-      <cache-container name="web" aliases="standard-session-cache" default-cache="repl" module="org.jboss.as.clustering.web.infinispan">
-        <transport lock-timeout="60000"/>
-        <replicated-cache name="repl" mode="ASYNC" batching="true">
-          <file-store/>
-        </replicated-cache>
-        <replicated-cache name="sso" mode="SYNC" batching="true"/>
-        <distributed-cache name="dist" mode="ASYNC" batching="true" l1-lifespan="0">
-          <file-store/>
-        </distributed-cache>
       </cache-container>
     </subsystem>
     <subsystem xmlns="urn:jboss:domain:jca:1.1">
