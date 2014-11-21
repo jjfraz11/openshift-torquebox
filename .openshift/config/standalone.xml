@@ -137,7 +137,9 @@
             </datasources>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:deployment-scanner:1.1">
-            <deployment-scanner deployment-timeout="1200" path="deployments" relative-to="jboss.server.base.dir" scan-interval="0" auto-deploy-zipped="false"/>
+            <deployment-scanner scan-interval="5000" deployment-timeout="1200"
+				relative-to="jboss.server.base.dir" path="deployments"
+				auto-deploy-zipped="false"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:ee:1.1">
             <spec-descriptor-property-replacement>false</spec-descriptor-property-replacement>
